@@ -1,8 +1,10 @@
+
 pipeline {
     agent any
     environment {
         IMAGE_NAME = 'helpdesk:latest'
         CONTAINER_NAME = 'helpdesk-app'
+        DOCKER = '"C:\\Users\\thach\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe"'
     }
     stages {
         stage('Install Dependencies') {
@@ -12,12 +14,12 @@ pipeline {
             steps { bat 'npm test' }
         }
         stage('Build Docker Image') {
-            steps { bat 'docker build -t %IMAGE_NAME% .' }
+            steps { bat '%DOCKER% build -t %IMAGE_NAME% .' }
         }
         stage('Deploy Locally') {
             steps {
-                bat 'docker rm -f %CONTAINER_NAME% 2>NUL || exit /b 0'
-                bat 'docker run -d --name %CONTAINER_NAME% -p 3000:3000 -v helpdesk-data:/app/data --restart unless-stopped %IMAGE_NAME%'
+                bat '%DOCKER% rm -f %CONTAINER_NAME% 2>NUL || exit /b 0'
+                bat '%DOCKER% run -d --name %CONTAINER_NAME% -p 3000:3000 -v helpdesk-data:/app/data --restart unless-stopped %IMAGE_NAME%'
             }
         }
     }
