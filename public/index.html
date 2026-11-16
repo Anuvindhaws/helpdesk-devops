@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HelpDesk | IT Support</title><link rel="stylesheet" href="/style.css"></head>
+<body><header><div><small>IT SERVICE MANAGEMENT</small><h1>HelpDesk</h1></div><span>● Service portal</span></header>
+<main><section class="hero"><div><small>SUPPORT CENTER</small><h2>How can we help you?</h2><p>Create a ticket and our IT team will take it from there.</p></div><b>HD</b></section>
+<div class="layout"><form id="ticket-form" class="panel"><small>NEW REQUEST</small><h3>Submit a ticket</h3>
+<label>Your name<input name="requester" placeholder="e.g. Alex Morgan" required></label>
+<label>Issue title<input name="title" placeholder="e.g. Laptop won't start" required></label>
+<label>Describe the issue<textarea name="description" rows="4" required></textarea></label>
+<label>Priority<select name="priority"><option>Low</option><option selected>Medium</option><option>High</option></select></label>
+<button>Create support ticket →</button><p id="message"></p></form>
+<section class="panel"><small>YOUR WORKSPACE</small><h3>Recent tickets</h3>
+<div class="stats"><div><strong id="open-count">0</strong>Open</div><div><strong id="progress-count">0</strong>In progress</div><div><strong id="resolved-count">0</strong>Resolved</div></div>
+<div id="ticket-list"><p class="empty">No tickets yet. Create your first request.</p></div></section></div>
+<footer>HelpDesk Demo · Jenkins CI/CD learning project</footer></main><script src="/app.js"></script></body></html>
